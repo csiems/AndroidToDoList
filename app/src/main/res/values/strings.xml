@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ToDo Aplication</string>
+    <string name="firebase_url">https://epicodustodoapp.firebaseio.com/</string>
+</resources>
