@@ -1,0 +1,73 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.guest.todoaplication.activity.CRUDFragment">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:text="Title"
+        android:id="@+id/detailTitle"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:id="@+id/detailDescription"
+        android:text="Description"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:id="@+id/detailCategory"
+        android:text="Category"/>
+
+
+    <LinearLayout
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDIT"
+            android:layout_margin="5dp"
+            android:id="@+id/detailEdit"
+            android:layout_weight=".5"
+            android:layout_gravity="left"
+            android:background="@color/accent_material_dark"
+            android:textColor="@color/abc_primary_text_material_light" />
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DELETE"
+            android:layout_margin="5dp"
+            android:id="@+id/detailDelete"
+            android:layout_weight=".5"
+            android:layout_gravity="right"
+            android:background="#b72a2a"
+            android:textColor="@color/abc_primary_text_material_light" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</FrameLayout>

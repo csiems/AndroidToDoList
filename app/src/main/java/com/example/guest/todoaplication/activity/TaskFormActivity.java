@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -34,15 +35,44 @@ public class TaskFormActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v == saveButton) {
-//            String uuidString = UUID.randomUUID().toString();
             String title = titleLabel.getText().toString();
             String category = categoryLabel.getText().toString();
             String description = descriptionLabel.getText().toString();
-            Task newTask = new Task(title, category, description);
-            saveTaskToFirebase(newTask);
-            Intent intent = new Intent(TaskFormActivity.this, MainActivity.class);
-            startActivity(intent);
+            if (!title.equals("") && !category.equals("") && !description.equals("")) {
+                Task newTask = new Task(title, category, description);
+                saveTaskToFirebase(newTask);
+                emptyFormFields((ViewGroup) findViewById(R.id.scrollView));
+                Intent intent = new Intent(TaskFormActivity.this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                if (title.equals("")) {
+                    throwWarning(titleLabel);
+                }
+                if (category.equals("")) {
+                    throwWarning(categoryLabel);
+                }
+                if (description.equals("")) {
+                    throwWarning(descriptionLabel);
+                }
+            }
         }
+    }
+
+    private void throwWarning(EditText editText) {
+        editText.setError("Missing form information!");
+    }
+
+    private void emptyFormFields(ViewGroup group) {
+        for (int i = 0, count = group.getChildCount(); i < count; ++i) {
+            View view = group.getChildAt(i);
+            if (view instanceof EditText) {
+                ((EditText)view).setText("");
+            }
+
+            if(view instanceof ViewGroup && (((ViewGroup)view).getChildCount() > 0))
+                emptyFormFields((ViewGroup)view);
+        }
+
     }
 
     public void saveTaskToFirebase(Task newTask) {

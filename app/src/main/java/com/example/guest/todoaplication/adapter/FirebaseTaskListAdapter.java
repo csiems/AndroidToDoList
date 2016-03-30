@@ -15,6 +15,7 @@ import com.firebase.client.Query;
  */
 public class FirebaseTaskListAdapter extends FirebaseRecyclerAdapter<TaskViewHolder, Task> {
 
+
     public FirebaseTaskListAdapter (Query query, Class<Task> itemClass) {
         super(query, itemClass);
     }
